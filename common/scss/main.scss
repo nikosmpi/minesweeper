@@ -11,9 +11,35 @@ body {
 }
 .mines {
 	background-color: white;
+	position: relative;
+	&__popup {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 15px;
+		border: 1px solid black;
+		background-color: white;
+		font-size: 20px;
+		display: flex;
+    	flex-direction: column;
+		align-items: center;
+		button {
+			margin-top: 20px;
+		}
+	}
 	&__board {
 		display: flex;
 		flex-direction: column;
+		&.gameover::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255,255,255, 0.5);
+		}
 		&_row {
 			display: flex;
 		}

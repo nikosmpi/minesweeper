@@ -14,14 +14,21 @@
 			<input v-model="tempDimension" type="number">
 			<button @click="setDimension">SET</button>
 		</div>
-		<div class="mines__board" v-else>
+		<div class="mines__board" :class="{gameover: gameOver}" v-else>
 			<div key="i" v-for="i in gridDimension" class="mines__board_row">
 				<div key="i-j" v-for="j in gridDimension" class="mines__board_cell" @click="() => clickCell(i,j)" :class="cellInfo(i,j)">
 					<span v-if="cellTextShow(i,j)">{{cellText(i,j)}}</span>
 				</div>
 			</div>
 		</div>
-		
+		<div class="mines__popup" v-if="gameOver">
+			<div>GAME OVER</div>
+			<button @click="resetGame">RESTART</button>
+		</div>
+		<div class="mines__popup" v-if="youWin">
+			<div>YOU WIN</div>
+			<button @click="resetGame">RESTART</button>
+		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<script src="common/compiled/main.js"></script>
